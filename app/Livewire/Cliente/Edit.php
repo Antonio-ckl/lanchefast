@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-
+    public $clienteId;
     public $nome;
     public $endereco;
     public $telefone;
@@ -17,7 +17,7 @@ class Edit extends Component
     
     public function mount($id){
         $clientes=Cliente::find($id);
-
+        $this->clienteId>$clientes->id;
         $this->nome->$clientes->nome;
         $this->endereco->$clientes->endereco;
         $this->telefone->$clientes->telefone;
