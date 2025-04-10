@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-
+    public $clienteId;
     public $nome;
     public $endereco;
     public $telefone;
@@ -15,29 +15,34 @@ class Edit extends Component
     public $cpf;
     public $senha;
     
-    public function mount($id){
-        $clientes=Cliente::find($id);
-
-        $this->nome->$clientes->nome;
-        $this->endereco->$clientes->endereco;
-        $this->telefone->$clientes->telefone;
-        $this->email->$clientes->email;
-        $this->cpf->$clientes->cpf;
-        $this->senha->$clientes->senha;
+    public function mount($id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        $this->clienteId = $cliente->id;
+        $this->nome = $cliente->nome;
+        $this->endereco = $cliente->endereco;
+        $this->telefone = $cliente->telefone;
+        $this->email = $cliente->email;
+        $this->cpf = $cliente->cpf;
+        $this->senha = $cliente->senha;
     }
 
-    public function save(){
-        $clientes= Cliente::find($this->id);
-        $this->nome->$clientes->nome;
-        $this->endereco->$clientes->endereco;
-        $this->telefone->$clientes->telefone;
-        $this->email->$clientes->email;
-        $this->cpf->$clientes->cpf;
-        $this->senha->$clientes->senha;
+    public function update()
+    {
+        $validated = $this->validate([
+            'nome' => 'required|min:3',
+            'email' => 'required|email',
+            'cpf' => 'required',
+            'telefone' => 'required'
+        ]);
 
-        $clientes->save();
-        session()->flash('success', 'Cliente Atualizado');
+        $cliente = Cliente::findOrFail($this->clienteId);
+        $cliente->update($validated);
+
+        session()->flash('message', 'Cliente atualizado com sucesso!');
+        return redirect()->route('cliente.index');
     }
+
     public function render()
     {
         return view('livewire.cliente.edit');
