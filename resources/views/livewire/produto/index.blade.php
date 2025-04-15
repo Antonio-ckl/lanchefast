@@ -45,26 +45,33 @@
                     </thead>
                     <tbody>
                         @forelse($produtos as $produto)
-                            <tr>
-                                <td>{{ $produto->nome }}</td>
-                                <td>{{ $produto->ingredientes }}</td>
-                                <td>{{ $produto->valor }}</td>
-                                <td>
-                                    <a href="{{ route('produtos.show', $produto->id) }}" 
-                                        class="btn btn-sm btn-info">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a href="{{ route('produtos.edit', $produto->id) }}" 
-                                        class="btn btn-sm btn-warning">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <button wire:click="delete({{ $produto->id }})" 
-                                        class="btn btn-sm btn-danger" onclick="return 
-                                        confirm('Tem certeza?')">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @if($produto->imagem)
+                                    <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome }}" style="max-width: 100px; max-height: 100px;">
+                                @else
+                                    <span>Sem imagem</span>
+                                @endif
+                            </td>
+                            <td>{{ $produto->nome }}</td>
+                            <td>{{ $produto->ingredientes }}</td>
+                            <td>{{ $produto->valor }}</td>
+                            <td>
+                                <a href="{{ route('produtos.show', $produto->id) }}" 
+                                    class="btn btn-sm btn-info">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="{{ route('produtos.edit', $produto->id) }}" 
+                                    class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <button wire:click="delete({{ $produto->id }})" 
+                                    class="btn btn-sm btn-danger" onclick="return 
+                                    confirm('Tem certeza?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
                         @empty
                             <tr>
                                 <td colspan="5" class="text-center">

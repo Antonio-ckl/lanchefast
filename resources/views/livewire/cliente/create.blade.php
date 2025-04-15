@@ -19,7 +19,7 @@
                 </div>
             @endif
 
-            <form wire:submit.prevent="store">
+<form wire:submit.prevent="store" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="nome" class="form-label">Nome</label>
@@ -56,6 +56,12 @@
                         <input type="password" wire:model="senha" id="senha" class="form-control">
                         @error('senha') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="imagem" class="form-label">Imagem</label>
+                    <input type="file" wire:model="imagem" id="imagem" class="form-control" accept="image/*">
+                    @error('imagem') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="mt-4">
