@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h2>Cadastrar Novo Produto</h2>
-            <a href="{{ route('produto.index') }}" class="btn btn-secondary">
+            <a href="{{ route('produtos.index') }}" class="btn btn-secondary">
                 <i class="bi bi-arrow-left"></i> Voltar
             </a>
         </div>
@@ -34,12 +34,22 @@
                         @error('preco') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="imagem" class="form-label">Imagem</label>
-                        <input type="file" wire:model="imagem" id="imagem" class="form-control" accept="image/*">
-                        @error('imagem') <span class="text-danger">{{ $message }}</span> @enderror
+                    <div class="col-md-6 mb-3"> 
+
+                        <label class="btn btn-outline-primary btn-sm mt-2"> 
+                            <i class="bi bi-upload"></i> Escolher Foto 
+                            <input type="file" wire:model="imagem" class="d-none" accept="image/*"> 
+                        </label> 
+
+                        @if ($imagem)
+                            <div class="mt-2">
+                                <img src="{{ $imagem->temporaryUrl() }}" alt="Preview da Imagem" style="max-width: 200px; max-height: 200px;">
+                            </div>
+                        @endif
+
+                        @error('imagem') <small class="text-danger d-block">{{ $message }}</small> @enderror 
+
                     </div>
-                </div>
 
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary">
