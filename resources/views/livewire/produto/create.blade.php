@@ -23,19 +23,18 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="descricao" class="form-label">Descrição</label>
-                        <input type="text" wire:model="descricao" id="descricao" class="form-control">
-                        @error('descricao') <span class="text-danger">{{ $message }}</span> @enderror
+                        <label for="ingredientes" class="form-label">Ingredientes</label>
+                        <input type="text" wire:model="ingredientes" id="ingredientes" class="form-control">
+                        @error('ingredientes') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="preco" class="form-label">Preço</label>
-                        <input type="number" wire:model="preco" id="preco" class="form-control" step="0.01">
-                        @error('preco') <span class="text-danger">{{ $message }}</span> @enderror
+                        <label for="valor" class="form-label">Valor</label>
+                        <input type="number" wire:model="valor" id="valor" class="form-control" step="0.01">
+                        @error('valor') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="col-md-6 mb-3"> 
-
                         <label class="btn btn-outline-primary btn-sm mt-2"> 
                             <i class="bi bi-upload"></i> Escolher Foto 
                             <input type="file" wire:model="imagem" class="d-none" accept="image/*"> 
@@ -48,13 +47,13 @@
                         @endif
 
                         @error('imagem') <small class="text-danger d-block">{{ $message }}</small> @enderror 
-
                     </div>
 
-                <div class="mt-4">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-save"></i> Cadastrar
-                    </button>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                            <i class="bi bi-save"></i> Cadastrar
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -37,6 +37,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>Imagem</th>
                             <th>Nome</th>
                             <th>Ingredientes</th>
                             <th>Valor</th>
@@ -48,7 +49,7 @@
                         <tr>
                             <td>
                                 @if($produto->imagem)
-                                    <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome }}" style="max-width: 100px; max-height: 100px;">
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($produto->imagem) }}" alt="{{ $produto->nome }}" style="max-width: 100px; max-height: 100px;">
                                 @else
                                     <span>Sem imagem</span>
                                 @endif
