@@ -1,12 +1,12 @@
 <div class="container mt-4">
+    <div class="bg-transparent border-0 d-flex justify-content-between align-items-center mb-4 pt-3">
+        <h1 class="h3 text-primary"><i class="bi bi-person-circle"></i> Cadastrar Produto</h1>
+        <a href="{{ route('cliente.index') }}" class="btn  btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+    </div>
+    
     <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h2>Cadastrar Novo Cliente</h2>
-            <a href="{{ route('cliente.index') }}" class="btn btn-secondary">
-                <i class="bi bi-arrow-left"></i> Voltar
-            </a>
-        </div>
-        
         <div class="card-body">
             @if(session('message'))
                 <div class="alert alert-success">
