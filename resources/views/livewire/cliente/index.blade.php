@@ -1,11 +1,11 @@
 <div class="container mt-4">
     <div class="row mb-3">
         <div class="col-md-6">
-            <h2>Clientes</h2>
+            <h1 class="h3 text-primary"><i class="bi bi-person-circle"></i>  Cliente</h1>
         </div>
         <div class="col-md-6 text-end">
             <a href="{{ route('cliente.create') }}" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Novo Cliente
+                <i class="bi bi-person-fill-add"></i> Novo Cliente
             </a>
         </div>
     </div>
@@ -14,8 +14,8 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <input type="text" wire:model.debounce.300ms="search" class="form-control"
-                        placeholder="Buscar Clientes...">
+<input type="text" wire:model.lazy="search" class="form-control"
+    placeholder="Buscar Clientes...">
                 </div>
                 <div class="col-md-3">
                     <select wire:model="perPage" class="form-select">
@@ -53,19 +53,19 @@
                             <td>
                                 <a href="{{route('cliente.show', $cliente->id)}}"
                                     class="btn btn-sm btn-info">
-                                    <i class="bi bi-eye"></i>
+                                    <i class="bi bi-info-circle-fill"></i>
                                 </a>
 
                                 
                                 <a href="{{route('cliente.edit', $cliente->id)}}"
                                     class="btn btn-sm btn-warning">
-                                    <i class="bi bi-pencil"></i>
+                                    <i class="bi bi-person-fill-gear"></i>
                                 </a>
 
                                 
                                 <button wire:click="delete({{$cliente->id}})"
                                     class="btn btn-sm btn-danger" onclick="return confirm('Tem Certeza')">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-person-x-fill"></i>
                                 </button>
                             </td>
                         </tr>
