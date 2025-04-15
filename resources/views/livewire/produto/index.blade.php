@@ -1,13 +1,9 @@
 <div class="container mt-4">
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <h2>Produtos</h2>
-        </div>
-        <div class="col-md-6 text-end">
-            <a href="{{ route('produtos.create') }}" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Novo Produto
-            </a>
-        </div>
+    <div class="bg-transparent border-0 d-flex justify-content-between align-items-center mb-4 pt-3">
+        <h1 class="h3 text-primary"><i class="bi bi-box-seam"></i> Produtos</h1>
+        <a href="{{ route('produtos.create') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-plus-circle"></i> Novo Produto
+        </a>
     </div>
 
     <div class="card">
@@ -37,7 +33,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Imagem</th>
+                            <th>Imagem  </th>
                             <th>Nome</th>
                             <th>Ingredientes</th>
                             <th>Valor</th>
