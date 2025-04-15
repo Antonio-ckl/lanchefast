@@ -43,16 +43,20 @@
                     <tbody>
                         @forelse($produtos as $produto)
                         <tr>
-                            <td>
+                            <td style="width: 120px;">
                                 @if($produto->imagem)
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($produto->imagem) }}" alt="{{ $produto->nome }}" style="max-width: 100px; max-height: 100px;">
+                                    <div class="card shadow-sm" style="width: 100px; height: 100px; overflow: hidden; border-radius: 8px;">
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($produto->imagem) }}" alt="{{ $produto->nome }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
                                 @else
-                                    <span>Sem imagem</span>
+                                    <div class="d-flex align-items-center justify-content-center bg-light" style="width: 100px; height: 100px; border-radius: 8px;">
+                                        <span class="text-muted">Sem imagem</span>
+                                    </div>
                                 @endif
                             </td>
-                            <td>{{ $produto->nome }}</td>
-                            <td>{{ $produto->ingredientes }}</td>
-                            <td>{{ $produto->valor }}</td>
+                            <td class="align-middle fw-bold" style="font-size: 1.1rem;">{{ $produto->nome }}</td>
+                            <td class="align-middle text-muted" style="max-width: 300px;">{{ $produto->ingredientes }}</td>
+                            <td class="align-middle fw-semibold text-primary" style="font-size: 1.1rem;">R$ {{ number_format($produto->valor, 2, ',', '.') }}</td>
                             <td>
                                 <a href="{{ route('produtos.show', $produto->id) }}" 
                                     class="btn btn-sm btn-info">
